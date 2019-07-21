@@ -7,4 +7,6 @@ use Rack::MethodOverride
 #use Rack::Session::Cookie
 # use SessionsController
 use UsersController
+use StadiumsController
+use TeamsController
 run ApplicationController
