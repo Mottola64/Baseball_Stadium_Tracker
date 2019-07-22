@@ -1,7 +1,24 @@
+require 'pry'
+
 class UsersController < ApplicationController
 
   get '/signup' do
     erb :'users/signup'
+  end
+
+  post '/signup' do
+    @current_user = User.new(params)
+    if User.find_by(:username => params)
+      @error = "This username is taken, please try again."
+      erb :'users/signup'
+    elsif params.values.any? {|value| value == ""}
+      @error = "All Fields Required"
+      erb :'users/signup'
+    else
+      @current_user.save
+      session[:user_id] = @current_user.id
+      redirect '/'
+    end
   end
 
   get '/login' do
@@ -13,9 +30,10 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    user = User.find_by(:email => params[:email])
+    @user = User.find_by(:username => params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
+      redirect '/'
     else
       redirect to '/signup'
     end
@@ -28,17 +46,6 @@ class UsersController < ApplicationController
     else
       redirect to '/'
   end
-
-  post '/signup' do
-  if params[:name] == "" || params[:email] == "" || params[:password] == ""
-    redirect to '/signup'
-  else
-    @user = User.new(:email => params[:email], :password => params[:password])
-    @user.save
-    session[:user_id] = @user.id
-    redirect to '/stadiums'
-  end
-end
 
 end
 end
