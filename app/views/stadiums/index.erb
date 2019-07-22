@@ -4,7 +4,8 @@
 <h1>All The Stadiums That You've Visited</h1>
 <% @stadiums = Stadium.all %>
 <% @stadiums.each do |stadium| %>
-<h2><%=stadium.name %></h2>
+<h2><%=stadium.id%>. <%=stadium.name %> - <%=stadium.team%></h2>
+
 <% end %>
 
 <a href="/stadiums/new">Add New Stadium</a>

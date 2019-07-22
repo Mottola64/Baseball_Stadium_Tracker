@@ -1,17 +1,17 @@
 class StadiumsController < ApplicationController
 
-  get '/stadiums' do
+  get '/stadiums/new' do
     if logged_in?
-      @stadiums = Stadium.all
-      erb :'stadiums/index'
+      erb :'stadiums/new'
     else
       erb :'users/login'
     end
   end
 
-  get 'stadiums/new' do
+  get '/stadiums' do
     if logged_in?
-      erb :'stadiums/new'
+      @stadiums = Stadium.all
+      erb :'stadiums/index'
     else
       erb :'users/login'
     end
@@ -27,7 +27,7 @@ class StadiumsController < ApplicationController
     end
   end
 
-  get 'stadiums/:id' do
+  get '/stadiums/:id' do
     if logged_in?
       @stadium = Stadium.find(params[:id])
       erb :'stadiums/show'
