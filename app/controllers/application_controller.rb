@@ -9,22 +9,14 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     if logged_in?
-      erb:'stadiums/index'
+      erb :'stadiums/index'
     else
       erb :'/users/login'
     end
   end
 
-helpers do
 
-  # def login(email:, password:)
-  #   user = User.find_by(email: email)
-  #   if user && user.authenticate(password)
-  #     session[:user_id] = user.id
-  #   else
-  #     redirect '/login'
-  #   end
-  # end
+helpers do
 
   def logged_in?
     !!current_user
@@ -34,5 +26,4 @@ helpers do
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 end
-
 end
