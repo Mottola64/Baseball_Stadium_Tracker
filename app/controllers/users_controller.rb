@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   post '/signup' do
     @current_user = User.new(params)
-    if User.find_by(:username => params)
+    if User.find_by(:username => params[:username])
       @error = "This username is taken, please try again."
       erb :'users/signup'
     elsif params.values.any? {|value| value == ""}
