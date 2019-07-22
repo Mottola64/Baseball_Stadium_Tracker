@@ -8,6 +8,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
+    @stadiums = Stadium.all
     if logged_in?
       erb :'stadiums/index'
     else
