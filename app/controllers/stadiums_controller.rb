@@ -3,13 +3,13 @@ class StadiumsController < ApplicationController
   get '/stadiums' do
     if logged_in?
       @stadiums = Stadium.all
-      erb :'/stadiums/index'
+      erb :'stadiums/index'
     else
       erb :'users/login'
     end
   end
 
-  get '/stadiums/new' do
+  get 'stadiums/new' do
     if logged_in?
       erb :'stadiums/new'
     else
@@ -22,8 +22,8 @@ class StadiumsController < ApplicationController
       erb :'stadiums/new'
     else
       user = User.find(session[:user_id])
-      @stadium = Stadium.create(name: params[:name], team: params[:team], city: params[:city])
-      redirect to "/stadiums/#{@stadium.id}"
+      stadium = Stadium.create(name: params[:name], team: params[:team])
+      redirect to "/stadiums/#{stadium.id}"
     end
   end
 

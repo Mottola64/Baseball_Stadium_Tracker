@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20190722021017) do
 
   add_index "ar_internal_metadata", ["key"], name: "sqlite_autoindex_ar_internal_metadata_1", unique: true
 
-  create_table "stadiums", force: :cascade do |t|
+  create_table "stadia", force: :cascade do |t|
     t.string "name"
     t.string "team"
   end

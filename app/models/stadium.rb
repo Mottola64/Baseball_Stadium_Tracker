@@ -1,4 +1,4 @@
 class Stadium < ActiveRecord::Base
-belongs_to :team
+has_many :teams
 belongs_to :user
 end

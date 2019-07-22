@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
   has_secure_password
-  has_many :team
-  has_many :stadiums, through: :team
+  has_many :teams
+  has_many :teams, through: :stadia
 end
