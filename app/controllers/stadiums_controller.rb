@@ -58,4 +58,15 @@ class StadiumsController < ApplicationController
       erb :'/users/login'
   end
 end
+
+  get '/stadiums/:id/delete' do
+    if logged_in?
+      @stadium = Stadium.find(params[:id])
+      @stadium.delete
+      redirect to '/stadiums'
+    else
+      redirect to '/login'
+  end
+end
+
 end
