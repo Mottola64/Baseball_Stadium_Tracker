@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<div style="text-align:center;">
 
 <h1>Edit Stadium</h1>
 
-
-
 <br>
 <form action="/stadiums/<%= @stadium.id %>" method="POST">
-  <input type="text" name="name" id="name" placeholder="Name" value="<%= @stadium.name %>"/><br/>
-  <input type="text" name="team" id="team" placeholder="Team" value="<%= @stadium.team %>"/><br/>
+  Edit Name <input type="text" name="name" id="name" placeholder="Name" value="<%= @stadium.name %>"/><br/>
+  Edit Team <input type="text" name="team" id="team" placeholder="Team" value="<%= @stadium.team %>"/><br/>
 
   <br><br>
   <input type="submit" value="Edit Stadium">
 </form>
-<div>
