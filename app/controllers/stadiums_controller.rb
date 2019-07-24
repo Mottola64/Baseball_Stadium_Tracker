@@ -36,4 +36,18 @@ class StadiumsController < ApplicationController
     end
   end
 
+  patch '/stadiums/:id' do
+   if params.values.any? {|value| value == ""}
+     @stadium = Stadium.find(params[:id])
+     erb :'stadiums/edit'
+     redirect to "/stadiums/#{params[:id]}/edit"
+   else
+     @stadium = Stadium.find(params[:id])
+     @stadium.name = params[:name]
+     @stadium.team = params[:team]
+     @stadium.save
+     redirect to "/stadiums/#{@stadium.id}"
+   end
+ end
+
 end
