@@ -36,7 +36,7 @@ class StadiumsController < ApplicationController
     end
   end
 
-  patch '/stadiums/:id' do
+  post '/stadiums/:id' do
    if params.values.any? {|value| value == ""}
      @stadium = Stadium.find(params[:id])
      erb :'stadiums/edit'
@@ -50,4 +50,12 @@ class StadiumsController < ApplicationController
    end
  end
 
+  get '/stadiums/:id/edit' do
+    if logged_in?
+    @stadium = Stadium.find(params[:id])
+     erb :'stadiums/edit'
+    else
+      erb :'/users/login'
+  end
+end
 end
