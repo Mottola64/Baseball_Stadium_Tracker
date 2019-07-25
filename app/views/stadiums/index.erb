@@ -1,5 +1,6 @@
 <h1>All The Stadiums That You've Visited</h1>
-<% @stadiums = Stadium.all %>
+
+<% @stadiums = Stadium.all.where("user_id == @current_user.id")%>
 <% @stadiums.each do |stadium| %>
 <h2><a href="/stadiums/<%= stadium.id %>"><%=stadium.name %> - <%=stadium.team%></a></h2>
 
