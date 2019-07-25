@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    @current_user = User.new(params)
+    #
     if User.find_by(:username => params[:username])
       @error = "This username is taken, please try again."
       erb :'users/signup'
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       @error = "All Fields Required"
       erb :'users/signup'
     else
+      @current_user = User.new(params)
       @current_user.save
       session[:user_id] = @current_user.id
       redirect '/'
@@ -41,7 +42,7 @@ class UsersController < ApplicationController
 
   get '/logout' do
     if logged_in?
-      session.clear
+      session.destroy
       redirect to '/login'
     else
       redirect to '/'
