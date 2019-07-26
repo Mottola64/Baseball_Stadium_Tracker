@@ -8,8 +8,9 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    @stadiums = Stadium.all
     if logged_in?
+      user = User.find_by_id(session[:user_id])
+      @stadiums = Stadium.all
       erb :'stadiums/index'
     else
       erb :'/users/login'
@@ -27,8 +28,12 @@ helpers do
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
-  def user_id
-    @current_user.id
-  end
+  # def self.current_user(session)
+  #      @user = User.find_by_id(session[:user_id])
+  #      if @user.is_a?(User)
+  #          @user
+  #      end
+  #  end
+
 end
 end

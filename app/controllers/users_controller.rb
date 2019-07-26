@@ -15,10 +15,9 @@ class UsersController < ApplicationController
       @error = "All Fields Required"
       erb :'users/signup'
     else
-      user = User.new(session[:id])
-      @current_user = User.new(params)
-      @current_user.save
-      session[:user_id] = @current_user.id
+      @user = User.new(params)
+      @user.save
+      session[:user_id] = @user.id
       redirect '/'
     end
   end

@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20190725033255) do
   end
 
   create_table "user_stadia", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "stadium_id"
   end
 

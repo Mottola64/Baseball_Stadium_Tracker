@@ -9,8 +9,10 @@ class StadiumsController < ApplicationController
   end
 
   get '/stadiums' do
+
     if logged_in?
-      @stadiums = UserStadia.all.where(user_id: current_user.id)
+      user = User.find(session[:user_id])
+      @stadiums = Stadium.all
       erb :'stadiums/index'
     else
       erb :'users/login'
@@ -18,10 +20,12 @@ class StadiumsController < ApplicationController
   end
 
   post '/stadiums' do
+    user = User.find(session[:user_id])
+
     if params.values.any? {|value| value == ""}
       erb :'stadiums/new'
     else
-      user = User.find(session[:user_id])
+      #@user = User.find(session[:user_id])
       @stadium = Stadium.create(name: params[:name], team: params[:team])
       redirect to "/stadiums/#{@stadium.id}"
     end
