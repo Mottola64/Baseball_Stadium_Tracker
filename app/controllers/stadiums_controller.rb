@@ -10,7 +10,7 @@ class StadiumsController < ApplicationController
 
   get '/stadiums' do
     if logged_in?
-      @stadiums = Stadium.all
+      @stadiums = Stadium.all.where("user_id == current_user.id")
       erb :'stadiums/index'
     else
       erb :'users/login'

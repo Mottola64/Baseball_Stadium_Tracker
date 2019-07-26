@@ -5,3 +5,4 @@ class CreateUserStadia < ActiveRecord::Migration
       t.integer :stadium_id
   end
 end
+end

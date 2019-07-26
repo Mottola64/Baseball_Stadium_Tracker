@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       @error = "All Fields Required"
       erb :'users/signup'
     else
+      @user_id = User.new(session[:id])
       @current_user = User.new(params)
       @current_user.save
       session[:user_id] = @current_user.id
