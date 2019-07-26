@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       user = User.new(session[:id])
       @current_user = User.new(params)
       @current_user.save
-      session[:user_id] = @user.id
+      session[:user_id] = @current_user.id
       redirect '/'
     end
   end
