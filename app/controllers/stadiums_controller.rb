@@ -10,7 +10,7 @@ class StadiumsController < ApplicationController
 
   get '/stadiums' do
     if logged_in?
-      @stadiums = Stadium.all.where("user_id == current_user.id")
+      @stadiums = UserStadia.all.where(user_id: current_user.id)
       erb :'stadiums/index'
     else
       erb :'users/login'
@@ -23,7 +23,7 @@ class StadiumsController < ApplicationController
     else
       user = User.find(session[:user_id])
       @stadium = Stadium.create(name: params[:name], team: params[:team])
-      redirect to "/stadiums/#{stadium.id}"
+      redirect to "/stadiums/#{@stadium.id}"
     end
   end
 
