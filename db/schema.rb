@@ -22,8 +22,9 @@ ActiveRecord::Schema.define(version: 20190725033255) do
   add_index "ar_internal_metadata", ["key"], name: "sqlite_autoindex_ar_internal_metadata_1", unique: true
 
   create_table "stadia", force: :cascade do |t|
-    t.string "name"
-    t.string "team"
+    t.string  "name"
+    t.integer "user_id"
+    t.string  "team"
   end
 
   create_table "user_stadia", force: :cascade do |t|
