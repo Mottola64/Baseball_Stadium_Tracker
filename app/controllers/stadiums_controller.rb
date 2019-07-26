@@ -22,7 +22,7 @@ class StadiumsController < ApplicationController
       erb :'stadiums/new'
     else
       user = User.find(session[:user_id])
-      @stadium = Stadium.create(name: params[:name], team: params[:team])
+      @stadium = Stadium.create(name: params[:name], team: params[:team], user_id: user.id)
       redirect to "/stadiums/#{@stadium.id}"
     end
   end
