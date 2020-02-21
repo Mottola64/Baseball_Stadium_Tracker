@@ -13,7 +13,6 @@ class StadiumsController < ApplicationController
     if logged_in?
       user = User.find(session[:user_id])
       @stadiums = Stadium.all
-      binding.pry
       erb :'stadiums/index'
     else
       erb :'users/login'

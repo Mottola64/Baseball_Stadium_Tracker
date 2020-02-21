@@ -7,5 +7,4 @@ end
 use Rack::MethodOverride
 use UsersController
 use StadiumsController
-use TeamsController
 run ApplicationController

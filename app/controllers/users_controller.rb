@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    #
     if User.find_by(:username => params[:username])
       @error = "This username is taken, please try again."
       erb :'users/signup'
